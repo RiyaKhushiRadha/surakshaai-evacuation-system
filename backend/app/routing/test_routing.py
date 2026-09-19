@@ -16,13 +16,14 @@ def get_path_from(room_name):
 
     return path_names, length
 
-# Reset — koi bhi purana block hata do
+# Reset
 db = SessionLocal()
 db.query(Edge).update({Edge.is_blocked: False})
 db.commit()
 db.close()
 
-# Alag alag rooms se test karo
-for room in ["Library", "Class 5", "Reception", "Store", "Class 2"]:
+# Test rooms from all 3 floors
+test_rooms = ["Class 15", "Computer Lab", "Class 12", "Terrace Access Door", "Class 2"]
+for room in test_rooms:
     path, dist = get_path_from(room)
     print(f"{room}: {path} (distance: {dist})")
